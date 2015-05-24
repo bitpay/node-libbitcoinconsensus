@@ -19,7 +19,7 @@ describe('Main', function() {
       var scriptPubKey = new Buffer('76a9144621d47f08fcb1e6be0b91144202de7a186deade88ac', 'hex');
 
       var valid = bitcoinconsensus.verifyScript(scriptPubKey, txTo, 0);
-      valid.should.equal(true);
+      valid.should.equal(1);
     });
 
     it('should not validate', function() {
@@ -28,7 +28,7 @@ describe('Main', function() {
       var scriptPubKey = new Buffer('76a9147821c0a3768aa9d1a37e16cf76002aef5373f1a888ac', 'hex');
 
       var valid = bitcoinconsensus.verifyScript(scriptPubKey, txTo, 0);
-      valid.should.equal(false);
+      valid.should.equal(0);
     });
   });
 

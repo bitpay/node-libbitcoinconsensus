@@ -20,13 +20,11 @@ void VerifyScript(const FunctionCallbackInfo<Value>& args) {
     return;
   }
 
-  unsigned char* scriptPubKey = (unsigned char*)node::Buffer::Data(args[0]);
-  unsigned int scriptPubKeyLen = (unsigned int)node::Buffer::Length(args[0]);
+  unsigned char *scriptPubKey = (unsigned char *) node::Buffer::Data(args[0]);
+  unsigned int scriptPubKeyLen = (unsigned int) node::Buffer::Length(args[0]);
 
-  const unsigned char* txTo = (unsigned char*)node::Buffer::Data(args[1]);
+  const unsigned char *txTo = (unsigned char *) node::Buffer::Data(args[1]);
   unsigned int txToLen = (unsigned int)node::Buffer::Length(args[1]);
-
-  Local<Number> num = Number::New(isolate, txToLen);
 
   unsigned int nIn = args[2]->NumberValue();
   unsigned int flags = args[3]->NumberValue();
@@ -34,23 +32,10 @@ void VerifyScript(const FunctionCallbackInfo<Value>& args) {
   bitcoinconsensus_error* err;
 
   int valid = bitcoinconsensus_verify_script(
-    scriptPubKey,
-    scriptPubKeyLen,
-    txTo,
-    txToLen,
-    nIn,
-    flags,
-    err
+    scriptPubKey, scriptPubKeyLen, txTo, txToLen, nIn, flags, err
   );
 
-  bool result = false;
-
-  if (valid != NULL) {
-    result = true;
-    args.GetReturnValue().Set(result);
-  } else {
-    args.GetReturnValue().Set(result);
-  }
+  args.GetReturnValue().Set(valid);
 
 }
 
