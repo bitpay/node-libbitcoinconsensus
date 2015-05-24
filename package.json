@@ -23,5 +23,8 @@
     "async": "^0.9.0",
     "benchmark": "^1.0.0",
     "bitcore": "^0.12.6"
+  },
+  "dependencies": {
+    "nan": "^1.8.4"
   }
 }

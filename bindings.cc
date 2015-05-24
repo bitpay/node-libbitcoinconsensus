@@ -1,23 +1,19 @@
 #include <node.h>
 #include <node_buffer.h>
+#include <nan.h>
 #include <bitcoinconsensus.h>
 
 using namespace v8;
 
-void VerifyScript(const FunctionCallbackInfo<Value>& args) {
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
+NAN_METHOD(VerifyScript) {
+  NanScope();
 
   if (!node::Buffer::HasInstance(args[0])) {
-    isolate->ThrowException(Exception::TypeError(
-                              String::NewFromUtf8(isolate, "First argument should be a Buffer.")));
-    return;
+    return NanThrowTypeError("First argument should be a Buffer.");
   }
 
   if (!node::Buffer::HasInstance(args[1])) {
-    isolate->ThrowException(Exception::TypeError(
-                              String::NewFromUtf8(isolate, "Second argument should be a Buffer.")));
-    return;
+    return NanThrowTypeError("Second argument should be a Buffer.");
   }
 
   unsigned char *scriptPubKey = (unsigned char *) node::Buffer::Data(args[0]);
@@ -33,23 +29,24 @@ void VerifyScript(const FunctionCallbackInfo<Value>& args) {
 
   int valid = bitcoinconsensus_verify_script(scriptPubKey, scriptPubKeyLen, txTo, txToLen, nIn, flags, err);
 
-  args.GetReturnValue().Set(valid);
+  NanReturnValue(NanNew<Number>(valid));
 
 }
 
-void Version(const FunctionCallbackInfo<Value>& args) {
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
+NAN_METHOD(Version) {
+  NanScope();
 
   unsigned int version = bitcoinconsensus_version();
-  Local<Number> num = Number::New(isolate, version);
 
-  args.GetReturnValue().Set(num);
+  NanReturnValue(NanNew<Number>(version));
 }
 
 void init(Handle<Object> exports) {
-  NODE_SET_METHOD(exports, "verifyScript", VerifyScript);
-  NODE_SET_METHOD(exports, "version", Version);
+  exports->Set(NanNew<String>("verifyScript"),
+               NanNew<FunctionTemplate>(VerifyScript)->GetFunction());
+
+  exports->Set(NanNew<String>("version"),
+               NanNew<FunctionTemplate>(Version)->GetFunction());
 }
 
 NODE_MODULE(addon, init)
