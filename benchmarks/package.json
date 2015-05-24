@@ -1,0 +1,13 @@
+{
+  "name": "libbitcoinconsensus-benchmarks",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^0.9.0",
+    "benchmark": "^1.0.0",
+    "bitcore": "^0.12.6"
+  }
+}

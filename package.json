@@ -1,0 +1,24 @@
+{
+  "name": "libbitcoinconsensus.js",
+  "description": "Node binding for libbitcoinconsensus",
+  "author": "Braydon Fuller",
+  "version": "0.0.1",
+  "main": "./index.js",
+  "repository": "git://github.com/braydonf/libbitcoinconsensus.js.git",
+  "homepage": "https://github.com/braydonf/libbitcoinconsensus.js",
+  "bugs": {
+    "url": "https://github.com/braydonf/libbitcoinconsensus.js/issues"
+  },
+  "scripts": {
+    "build": "./bin/build-libbitcoinconsensus remote",
+    "test": "mocha -R spec test --recursive"
+  },
+  "tags": [
+    "bitcoin",
+    "libbitcoinconsensus"
+  ],
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.5"
+  }
+}
