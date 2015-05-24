@@ -10,7 +10,8 @@
     "url": "https://github.com/braydonf/libbitcoinconsensus.js/issues"
   },
   "scripts": {
-    "test": "mocha -R spec test --recursive"
+    "test": "mocha -R spec test --recursive",
+    "benchmark": "node benchmarks/index.js"
   },
   "tags": [
     "bitcoin",
@@ -18,6 +19,9 @@
   ],
   "devDependencies": {
     "chai": "^2.3.0",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "async": "^0.9.0",
+    "benchmark": "^1.0.0",
+    "bitcore": "^0.12.6"
   }
 }
