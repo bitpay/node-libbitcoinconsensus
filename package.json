@@ -10,7 +10,6 @@
     "url": "https://github.com/braydonf/libbitcoinconsensus.js/issues"
   },
   "scripts": {
-    "build": "./bin/build-libbitcoinconsensus remote",
     "test": "mocha -R spec test --recursive"
   },
   "tags": [

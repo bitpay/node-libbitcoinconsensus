@@ -31,9 +31,7 @@ void VerifyScript(const FunctionCallbackInfo<Value>& args) {
 
   bitcoinconsensus_error* err;
 
-  int valid = bitcoinconsensus_verify_script(
-    scriptPubKey, scriptPubKeyLen, txTo, txToLen, nIn, flags, err
-  );
+  int valid = bitcoinconsensus_verify_script(scriptPubKey, scriptPubKeyLen, txTo, txToLen, nIn, flags, err);
 
   args.GetReturnValue().Set(valid);
 
