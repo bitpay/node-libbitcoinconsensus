@@ -9,7 +9,7 @@
         "bindings.cc"
       ],
       "libraries": [
-        '/usr/local/lib/libbitcoinconsensus.so'
+        '-lbitcoinconsensus'
       ]
     }
   ]
