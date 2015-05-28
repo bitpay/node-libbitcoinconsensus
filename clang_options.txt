@@ -1,0 +1,26 @@
+clang -dynamiclib \
+-I.. \
+-I/usr/local/Cellar/openssl/1.0.2a-1/include \
+-L/usr/local/Cellar/openssl/1.0.2a-1/lib \
+-L../crypto \
+-lcrypto \
+-lc++ \
+-lSystem.B \
+bitcoinconsensus.cpp \
+interpreter.cpp \
+script.cpp \
+../pubkey.cpp \
+../hash.cpp \
+../primitives/transaction.cpp \
+../ecwrapper.cpp \
+../eccryptoverify.cpp \
+../uint256.cpp \
+../utilstrencodings.cpp \
+../crypto/hmac_sha256.cpp \
+../crypto/hmac_sha512.cpp \
+../crypto/rfc6979_hmac_sha256.cpp \
+../crypto/ripemd160.cpp \
+../crypto/sha1.cpp \
+../crypto/sha256.cpp \
+../crypto/sha512.cpp \
+-o libbitcoinconsensus.dylib

@@ -15,7 +15,7 @@ NAN_METHOD(VerifyScript) {
   if (!node::Buffer::HasInstance(args[1])) {
     return NanThrowTypeError("Second argument should be a Buffer.");
   }
-
+  
   unsigned char *scriptPubKey = (unsigned char *) node::Buffer::Data(args[0]);
   unsigned int scriptPubKeyLen = (unsigned int) node::Buffer::Length(args[0]);
 
@@ -26,10 +26,16 @@ NAN_METHOD(VerifyScript) {
   unsigned int flags = args[3]->NumberValue();
 
   bitcoinconsensus_error* err;
+  err = 0;
 
   int valid = bitcoinconsensus_verify_script(scriptPubKey, scriptPubKeyLen, txTo, txToLen, nIn, flags, err);
 
+  if (!valid && err) {
+    NanThrowError("The transaction was not valid");
+  }
+
   NanReturnValue(NanNew<Number>(valid));
+
 
 }
 

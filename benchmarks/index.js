@@ -17,7 +17,7 @@ async.series([
     var scriptSig = new Buffer('473044022078200132c79b4484fa9fe7d890a4dac551f29e82d39fa92aa8b1f7486720666f02200b98c3cb9c6e76498d87fc5b3141b697782b2c3eec7b155d36fee6a7ea7393b901210228c64544740c51b9bd37df5bb9cdf79391398f32a030cbe9cc74e55098fea945', 'hex');
     var scriptPubKey = new Buffer('76a9144621d47f08fcb1e6be0b91144202de7a186deade88ac', 'hex');
 
-    var valid = bitcoinconsensus.verifyScript(scriptPubKey, txTo, 0);
+    var valid = bitcoinconsensus.verifyScript(scriptPubKey, txTo, 0, 0);
     assert.equal(valid, true);
 
     var pk = bitcore.Script.fromBuffer(scriptPubKey);
@@ -74,7 +74,9 @@ async.series([
       var data = fixtures[a++];
       var scriptPubKey = data.scriptPubKey.toBuffer();
       var txTo = data.tx.toBuffer();
-      bitcoinconsensus.verifyScript(scriptPubKey, txTo, 0);
+
+      var valid = bitcoinconsensus.verifyScript(scriptPubKey, txTo, 0, 0);
+      assert.equal(valid, true);
     }
 
     var b = 0;
