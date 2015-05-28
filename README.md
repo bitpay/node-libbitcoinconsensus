@@ -13,12 +13,14 @@ INSTALL
 Note: you will need to have g++/llvm installed first   
 
 ##### from git
+```bash
+git clone git@github.com:bitpay/libbitcoinconsensus.js.git
+cd libbitcoinconsensus.js
+git submodule init
+git submodule update
+npm install
+```
 
-`git clone git@github.com:bitpay/libbitcoinconsensus.js.git`  
-`cd libbitcoinconsensus.js`  
-`git submodule init`  
-`git submodule update`  
-`npm install` 
 
 NOTE: if you get multiple deprecation warnings on Mac OS X, fear not, you are using Apple's built-in libraries, all should work fine ;) 
 
@@ -68,15 +70,13 @@ none
 
 **Returns**: String representing the version of the library. 
 
-bitcoinconsensus.verifyScript(scriptPubKey, scriptPubKeyLen, txTo, toToLen, nIn, flags)
+bitcoinconsensus.verifyScript(scriptPubKey, txTo, nIn, flags)
 -----------------------------
 Verify the script according to the buffers sent in (scriptPubKey)
 
 **Parameters**
 * scriptPubKey - `Buffer`
-* scriptPubKeyLen - `integer` 
 * txTo -  `Buffer`
-* toToLen - `integer`
 * nInt - `integer`
 * flags - `integer`
 
