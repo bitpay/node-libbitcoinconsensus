@@ -30,31 +30,26 @@ USAGE
 
 'use strict';
 
-var bitcoinconsensus = require('./build/Release/bitcoinconsensus.node');
+var bitcoinconsensus = require('libbitcoinconsensus');
 
+// the transaction spending an output
+var txTo = new Buffer('01000000015884e5db9de218238671572340b207ee85b628074e7e467096c267266baf77a4000000006a4730440220340f35055aceb14250e4954b23743332f671eb803263f363d1d7272f1d487209022037a0eaf7cb73897ba9069fc538e7275c5ae188e934ae47ca4a70453b64fc836401210234257444bd3aead2b851bda4288d60abe34095a2a8d49aff1d4d19773d22b32cffffffff01a0860100000000001976a9147821c0a3768aa9d1a37e16cf76002aef5373f1a888ac00000000', 'hex');
+
+// the previous unspent output script
+var scriptPubKey = new Buffer('76a9144621d47f08fcb1e6be0b91144202de7a186deade88ac', 'hex');
+
+// the input index that is spending the scriptPubKey
+var nIn = 0;
+
+var valid = bitcoinconsensus.verifyScript(scriptPubKey, txTo, nIn);
+
+// valid will equal 0 (false) or 1 (true)
+console.log(valid);
+
+// the version of libbitcoinconsensus
 var version = bitcoinconsensus.version();
 console.log(version);
 
-var txTo = new Buffer('01000000015884e5db9de218238671572340b207ee85b628074e7e467096c267266baf77a4000000006a4730440220340f35055aceb14250e4954b23743332f671eb803263f363d1d7272f1d487209022037a0eaf7cb73897ba9069fc538e7275c5ae188e934ae47ca4a70453b64fc836401210234257444bd3aead2b851bda4288d60abe34095a2a8d49aff1d4d19773d22b32cffffffff01a0860100000000001976a9147821c0a3768aa9d1a37e16cf76002aef5373f1a888ac00000000', 'hex');
-console.log(txTo);
-
-var scriptPubKey = new Buffer('76a9144621d47f08fcb1e6be0b91144202de7a186deade88ac', 'hex');
-
-console.log(scriptPubKey);
-
-var valid = bitcoinconsensus.verifyScript(scriptPubKey, txTo, 0);
-
-console.log(valid);
-
-var txTo = new Buffer('01000000015884e5db9de218238671572340b207ee85b628074e7e467096c267266baf77a4000000006a4730440220340f35055aceb14250e4954b23743332f671eb803263f363d1d7272f1d487209022037a0eaf7cb73897ba9069fc538e7275c5ae188e934ae47ca4a70453b64fc836401210234257444bd3aead2b851bda4288d60abe34095a2a8d49aff1d4d19773d22b32cffffffff01a0860100000000001976a9147821c0a3768aa9d1a37e16cf76002aef5373f1a888ac00000000', 'hex');
-
-console.log(txTo);
-
-var scriptPubKey = new Buffer('76a9147821c0a3768aa9d1a37e16cf76002aef5373f1a888ac', 'hex');
-
-var valid = bitcoinconsensus.verifyScript(scriptPubKey, txTo, 0);
-
-console.log(valid);
 
 ```
 API
