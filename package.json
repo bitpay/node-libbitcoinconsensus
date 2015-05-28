@@ -1,18 +1,22 @@
 {
-  "name": "libbitcoinconsensus.js",
+  "name": "libbitcoinconsensus",
   "description": "Node binding for libbitcoinconsensus",
   "author": "BitPay <dev@bitpay.com>",
   "version": "0.0.1",
   "main": "./index.js",
-  "repository": "git://github.com/bitpay/libbitcoinconsensus.js.git",
-  "homepage": "https://github.com/bitpay/libbitcoinconsensus.js",
+  "repository": "git://github.com/bitpay/node-libbitcoinconsensus.git",
+  "homepage": "https://github.com/bitpay/node-libbitcoinconsensus",
   "bugs": {
-    "url": "https://github.com/bitpay/libbitcoinconsensus.js/issues"
+    "url": "https://github.com/bitpay/node-libbitcoinconsensus/issues"
   },
   "contributors": [
     {
       "name": "Braydon Fuller",
       "email": "braydon@bitpay.com"
+    },
+    {
+      "name": "Chris Kleeschulte",
+      "email": "chrisk@bitpay.com"
     }
   ],
   "scripts": {
