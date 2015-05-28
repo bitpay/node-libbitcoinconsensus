@@ -55,4 +55,4 @@ void init(Handle<Object> exports) {
                NanNew<FunctionTemplate>(Version)->GetFunction());
 }
 
-NODE_MODULE(addon, init)
+NODE_MODULE(bitcoinconsensus, init);
