@@ -37,7 +37,7 @@ typedef enum bitcoinconsensus_error_t
 {
     bitcoinconsensus_ERR_OK = 0,
     bitcoinconsensus_ERR_TX_INDEX,
-    bitcoinconsensus_ERR_TX_SIZE_MISMATCH,
+    bitcoinconsensus_ERR_TX_SIZE_MISMATCH, //this is not really possible because we calculate this in the binding
     bitcoinconsensus_ERR_TX_DESERIALIZE,
 } bitcoinconsensus_error;
 

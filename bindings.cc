@@ -26,14 +26,13 @@ NAN_METHOD(VerifyScript) {
   unsigned int nIn = args[2]->NumberValue();
   unsigned int flags = args[3]->NumberValue();
 
-  bitcoinconsensus_error* err;
-  err = 0;
+  bitcoinconsensus_error err;
 
-  int valid = bitcoinconsensus_verify_script(scriptPubKey, scriptPubKeyLen, txTo, txToLen, nIn, flags, err);
+  int valid = bitcoinconsensus_verify_script(scriptPubKey, scriptPubKeyLen, txTo, txToLen, nIn, flags, &err);
   
-  if (!valid && err) {
-    Local<Value> errVal =  NanNew<Number>((int)*err);
-    NanThrowError(errVal);
+  if ((int)err) {
+    Local<Value> errVal =  NanNew<Number>((int)err);
+    return NanThrowError(errVal);
   }
 
   NanReturnValue(NanNew<Number>(valid));
