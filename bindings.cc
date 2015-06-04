@@ -32,9 +32,8 @@ NAN_METHOD(VerifyScript) {
   int valid = bitcoinconsensus_verify_script(scriptPubKey, scriptPubKeyLen, txTo, txToLen, nIn, flags, err);
   
   if (!valid && err) {
-    std::string s = std::to_string((int)*err);
-    char const *err_str = s.c_str();
-    NanThrowError(err_str);
+    Local<Value> errVal =  NanNew<Number>((int)*err);
+    NanThrowError(errVal);
   }
 
   NanReturnValue(NanNew<Number>(valid));
