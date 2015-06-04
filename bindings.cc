@@ -4,6 +4,7 @@
 #include <bitcoinconsensus.h>
 
 using namespace v8;
+using namespace std;
 
 NAN_METHOD(VerifyScript) {
   NanScope();
@@ -29,13 +30,14 @@ NAN_METHOD(VerifyScript) {
   err = 0;
 
   int valid = bitcoinconsensus_verify_script(scriptPubKey, scriptPubKeyLen, txTo, txToLen, nIn, flags, err);
-
+  
   if (!valid && err) {
-    NanThrowError("The transaction was not valid");
+    std::string s = std::to_string((int)*err);
+    char const *err_str = s.c_str();
+    NanThrowError(err_str);
   }
 
   NanReturnValue(NanNew<Number>(valid));
-
 
 }
 
