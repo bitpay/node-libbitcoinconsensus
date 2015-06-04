@@ -1,4 +1,4 @@
-SYNOPSIS [![Build Status](https://travis-ci.org/bitpay/libbitcoinconsensus.js.svg?branch=master)](https://github.com/bitpay/libbitcoinconsensus.js)
+SYNOPSIS [![Build Status](https://api.travis-ci.org/bitpay/node-libbitcoinconsensus.svg?branch=master)](https://github.com/bitpay/node-libbitcoinconsensus)
 ===
 
 This module provides native bindings to Bitcoin's [libbitcoinconsensus](https://github.com/bitcoin/bitcoin) functions.   
